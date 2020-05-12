@@ -43,7 +43,7 @@ love.update = function(dt)
     ball_timer = ball_timer + dt
     if ball_timer >= 1 then
         if num_balls > 0 then
-            local b = ball(10, 500, math.random(100, 600), math.random(-300, -500))
+            local b = ball(10, 500, math.random(100, 400), math.random(-200, -350))
             entities[#entities + 1] = b
             ball_timer = 0
             num_balls = num_balls - 1
