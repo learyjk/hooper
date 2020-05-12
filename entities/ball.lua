@@ -15,7 +15,7 @@ return function(x_pos, y_pos, x_vel, y_vel)
     entity.body:setLinearVelocity(x_vel, y_vel)
     entity.shape = love.physics.newCircleShape(0, 0, 5)
     entity.fixture = love.physics.newFixture(entity.body, entity.shape)
-    entity.fixture:setRestitution(0.5)
+    entity.fixture:setRestitution(0.75)
     entity.fixture:setUserData(entity)
 
     entity.draw = function(self)
