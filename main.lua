@@ -4,9 +4,9 @@ local state = require('state')
 local world = require('world')
 
 love.draw = function()
-  for _, entity in ipairs(entities) do
-    if entity.draw then entity:draw() end
-  end
+    for _, entity in ipairs(entities) do
+        if entity.draw then entity:draw() end
+    end
 end
 
 love.keypressed = function(pressed_key)
@@ -21,8 +21,19 @@ love.update = function(dt)
     local index = 1
     while index <= #entities do
         local entity = entities[index]
-        if entity.update then entity:update(dt) end
-        index = index + 1
+
+
+
+        if entity.update then
+            entity:update(dt)
+        end
+
+        if entity.type == 'ball' and entity.dead then
+            table.remove(entities, index)
+            entity.fixture:destroy()
+        else
+            index = index + 1
+        end
     end
 
     world:update(dt)

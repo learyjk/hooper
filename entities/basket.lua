@@ -6,15 +6,16 @@ return function()
     local window_width, window_height = love.window.getMode()
     local width = 60
     local height = 40
-    local speed = 600
+    local speed = 500
 
-    local right_boundary = (window_width - width) - 8
+    local right_boundary = (window_width - width) - 12
     local left_boundary = 2
-    local bottom_boundary = (window_height - height) - 8
+    local bottom_boundary = (window_height - height) - 100
     local top_boundary = 2
 
     --chain shape
     entity.body = love.physics.newBody(world, 10, 10, 'dynamic')
+    -- entity.body:setBullet(true)
     entity.shape = love.physics.newChainShape(false, 10, 10, 10, height, width, height, width, 10)
     entity.fixture = love.physics.newFixture(entity.body, entity.shape)
     entity.fixture:setUserData('entity')
