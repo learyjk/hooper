@@ -8,8 +8,8 @@ return function()
     local height = 40
     local speed = 500
 
-    local right_boundary = (window_width - width) - 12
-    local left_boundary = 2
+    local right_boundary = (window_width - width) - 1
+    local left_boundary = 1
     local bottom_boundary = (window_height - height) - 100
     local top_boundary = 2
 

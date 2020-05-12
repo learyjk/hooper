@@ -28,12 +28,12 @@ love.keyreleased = function(released_key)
 end
 
 love.update = function(dt)
-    -- ball_timer = ball_timer + dt
-    -- if ball_timer >= 3 then
-    --     local b = ball(10, 500, math.random(100, -300), math.random(-100, -300))
-    --     entities[#entities + 1] = b
-    --     ball_timer = 0
-    -- end
+    ball_timer = ball_timer + dt
+    if ball_timer >= 2 then
+        local b = ball(10, 500, math.random(200, -400), math.random(-200, -400))
+        entities[#entities + 1] = b
+        ball_timer = 0
+    end
 
 
     local basket = entities[1] --basket is the first entitiy.
