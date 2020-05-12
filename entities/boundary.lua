@@ -8,7 +8,6 @@ return function(x1, y1, x2, y2)
     entity.fixture:setUserData(entity)
 
     entity.draw = function(self)
-        print("draw")
         love.graphics.line(self.body:getWorldPoints(self.shape:getPoints()))
     end
 

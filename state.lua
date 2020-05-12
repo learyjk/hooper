@@ -1,4 +1,5 @@
 return {
+    level = 2,
     button_left = false,
     button_right = false,
     game_over = false,

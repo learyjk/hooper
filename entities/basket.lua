@@ -14,14 +14,20 @@ return function()
     local top_boundary = 2
 
     --chain shape
-    entity.body = love.physics.newBody(world, 10, 10, 'dynamic')
-    -- entity.body:setBullet(true)
-    entity.shape = love.physics.newChainShape(false, 10, 10, 10, height, width, height, width, 10)
+    entity.body = love.physics.newBody(world, 20, 20, 'dynamic')
+    entity.shape = love.physics.newChainShape(false, 0, 0, 0, height, width, height, width, 0)
     entity.fixture = love.physics.newFixture(entity.body, entity.shape)
+    entity.fixture:setFriction(1)
     entity.fixture:setUserData('entity')
 
     entity.draw = function(self)
         love.graphics.line(self.body:getWorldPoints(self.shape:getPoints()))
+
+        --debug
+        -- love.graphics.setColor(state.palette[1])
+        -- local x_center, y_center = self.body:getX(), self.body:getY()
+        -- love.graphics.circle('fill', x_center + width/2, y_center + height/2, 1)
+        -- love.graphics.setColor(state.palette[5])
     end
 
     entity.update = function(self)
@@ -39,6 +45,14 @@ return function()
         else
             self.body:setLinearVelocity(0, 0)
         end
+    end
+
+    entity.getWidth = function(self)
+        return width
+    end
+
+    entity.getHeight = function(self)
+        return height
     end
 
     return entity
