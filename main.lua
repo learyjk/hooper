@@ -43,9 +43,7 @@ love.update = function(dt)
         if entity.update then
             entity:update(dt, basket)
         end
-        if entity.caught then
-            print("CAUGHT!")
-        end
+
         if entity.type == 'ball' and entity.dead then
             table.remove(entities, index)
             entity.fixture:destroy()
