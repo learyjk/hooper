@@ -28,7 +28,6 @@ return function(x_pos, y_pos, x_vel, y_vel)
         local ball_x, ball_y = self.body:getWorldCenter()
         if ball_y > (window_height - 10) and ball_x > (window_width/2 - 10) and ball_x < (window_width/2 + 10) then
             self.dead = true
-            state.level = state.level + 1
         end
 
         -- check if in basket

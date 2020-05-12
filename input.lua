@@ -20,6 +20,15 @@ local press_functions = {
     escape = function()
         love.event.quit()
     end,
+
+    space = function()
+        state.paused = not state.paused
+    end,
+
+    r = function()
+        state.game_over = false
+        love.event.quit('restart')
+    end
 }
 
 local release_functions = {
