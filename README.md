@@ -3,3 +3,6 @@ Hooper is a game about not dropping the ball or maybe Gotta Catch 'Em All! Whate
 Programmed in lua using love2d framework.  thanks CS50 Game Dev course!
 
 ![](hooper-screen.png)
+
+Download the Mac OS X game here:
+[](https://www.keeganleary.com/static/hooper.zip)
