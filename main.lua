@@ -13,6 +13,16 @@ local total_score = 0
 local level = 1
 local num_balls = level
 
+sounds = {
+        ['catch'] = love.audio.newSource('sounds/catch.wav', 'static'),
+        ['emit'] = love.audio.newSource('sounds/emit.wav', 'static'),
+
+        -- https://www.purple-planet.com/upbeat
+        ['music'] = love.audio.newSource('sounds/summer.mp3', 'static')
+    }
+sounds['music']:setLooping(true)
+sounds['music']:play()
+
 love.draw = function()
     for _, entity in ipairs(entities) do
         if entity.draw then entity:draw() end
@@ -41,9 +51,15 @@ love.update = function(dt)
     end
 
     ball_timer = ball_timer + dt
-    if ball_timer >= 1 then
+    if ball_timer >= 2 then
         if num_balls > 0 then
-            local b = ball(10, 500, math.random(100, 400), math.random(-200, -350))
+            local b = nil
+            if num_balls % 2 == 0 then
+                b = ball(10, 500, math.random(100, 400), math.random(-200, -350))
+            else
+                b = ball(790, 500, math.random(-100, -400), math.random(-200, -350))
+            end
+            sounds['emit']:play()
             entities[#entities + 1] = b
             ball_timer = 0
             num_balls = num_balls - 1
@@ -65,6 +81,7 @@ love.update = function(dt)
         elseif entity.type == 'ball' and entity.caught then
             table.remove(entities, index)
             entity.fixture:destroy()
+            sounds['catch']:play()
             score = score + 1
             total_score = total_score + 1
             if score == level then
